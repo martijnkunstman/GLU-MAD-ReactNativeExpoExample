@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expoProject",
-    "description": "A very interesting project.",
+    "name": "GLU-MAD-ReactNativeExpoExample",
+    "description": "Grafisch Lyceum Utrecht - Mobile Application Development - React Native Expo example.",
     "slug": "expoProject",
     "privacy": "public",
     "sdkVersion": "29.0.0",
@@ -22,6 +22,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.martijnkunstman.ReactNativeExoExample"
     }
   }
 }

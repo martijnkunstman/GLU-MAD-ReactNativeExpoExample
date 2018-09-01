@@ -7,6 +7,8 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MyScreen from '../screens/MyScreen';
+import CameraScreen from '../screens/CameraScreen';
+import PixiScreen from '../screens/PixiScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -66,11 +68,41 @@ MyStack.navigationOptions = {
       name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
     />
   ),
+};  
+
+const CameraStack = createStackNavigator({
+  Camera: CameraScreen, 
+});
+
+CameraStack.navigationOptions = {
+  tabBarLabel: 'Camera',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
+};
+
+const PixiStack = createStackNavigator({
+  Pixi: PixiScreen, 
+});
+
+PixiStack.navigationOptions = {
+  tabBarLabel: 'Pixi',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+    />
+  ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  MyStack, 
+  MyStack,
+  CameraStack,
+  PixiStack,
 });
