@@ -8,7 +8,8 @@ import {
   View,
   TouchableOpacity,
   Slider,
-  Platform
+  Platform,
+  Image
 } from 'react-native';
 
 import isIPhoneX from 'react-native-is-iphonex';
@@ -64,12 +65,12 @@ export default class CameraScreen extends React.Component {
     flash: 'off',
     zoom: 0,
     autoFocus: 'on',
-    type: 'back',
+    type: 'front',
     whiteBalance: 'auto',
     ratio: '16:9',
     ratios: [],
     barcodeScanning: false,
-    faceDetecting: false,
+    faceDetecting: true,
     faces: [],
     newPhotos: false,
     permissionsGranted: false,
@@ -195,9 +196,14 @@ export default class CameraScreen extends React.Component {
             top: bounds.origin.y,
           },
         ]}>
-        <Text style={styles.faceText}>ID: {faceID}</Text>
-        <Text style={styles.faceText}>rollAngle: {rollAngle.toFixed(0)}</Text>
-        <Text style={styles.faceText}>yawAngle: {yawAngle.toFixed(0)}</Text>
+        <Image resizeMode="stretch" width="100%"
+              source={
+                __DEV__
+                  ? require('../assets/images/smile.png')
+                  : require('../assets/images/smile.png')
+              }
+              style={styles.welcomeImage}
+            />
       </View>
     );
   }
@@ -217,7 +223,7 @@ export default class CameraScreen extends React.Component {
       );
     return (
       <View key={`landmarks-${face.faceID}`}>
-        {renderLandmark(face.leftEyePosition)}
+        {renderLandmark(face.leftEyePosition)} 
         {renderLandmark(face.rightEyePosition)}
         {renderLandmark(face.leftEarPosition)}
         {renderLandmark(face.rightEarPosition)}
@@ -248,7 +254,7 @@ export default class CameraScreen extends React.Component {
         Camera permissions not granted - cannot open camera preview.
       </Text>
     </View>
-
+/*
   renderTopBar = () => 
     <View
       style={styles.topBar}>
@@ -265,6 +271,9 @@ export default class CameraScreen extends React.Component {
         <Text style={[styles.autoFocusLabel, { color: this.state.autoFocus === 'on' ? "white" : "#6b6b6b" }]}>AF</Text>
       </TouchableOpacity>   
     </View>
+    */
+
+    /*
 
   renderBottomBar = () =>
     <View
@@ -287,7 +296,9 @@ export default class CameraScreen extends React.Component {
         </View>
       </TouchableOpacity>
     </View>
+*/
 
+/*
   renderMoreOptions = () =>
     (
       <View style={styles.options}>
@@ -317,6 +328,8 @@ export default class CameraScreen extends React.Component {
       </View> 
     );
 
+*/
+
   renderCamera = () =>
     (
       <View style={{ flex: 1 }}>
@@ -344,12 +357,12 @@ export default class CameraScreen extends React.Component {
           }}
           onBarCodeScanned={this.state.barcodeScanning ? this.onBarCodeScanned : undefined}
           >
-          {this.renderTopBar()}
-          {this.renderBottomBar()}
+          
+        
         </Camera>
         {this.state.faceDetecting && this.renderFaces()}
         {this.state.faceDetecting && this.renderLandmarks()}
-        {this.state.showMoreOptions && this.renderMoreOptions()}
+   
       </View>
     );
 
@@ -363,6 +376,12 @@ export default class CameraScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  welcomeImage: {
+    flex: 1,
+    width: null,
+    height: null
+  
+  },
   container: {
     flex: 1,
     backgroundColor: '#000',
@@ -470,13 +489,13 @@ const styles = StyleSheet.create({
     top: 0,
   },
   face: {
-    padding: 10,
-    borderWidth: 2,
-    borderRadius: 2,
+    padding: 0,
+    borderWidth: 0,
+    borderRadius: 0,
     position: 'absolute',
     borderColor: '#FFD700',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   landmark: {
     width: landmarkSize,

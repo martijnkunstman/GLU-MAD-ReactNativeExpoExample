@@ -7,6 +7,7 @@ export default class MyScreen extends React.Component {
   static navigationOptions = {
     title: 'MyScreen',
   };
+  
 
   state = {
     accelerometerData: {},
@@ -57,6 +58,8 @@ export default class MyScreen extends React.Component {
   render() {
 
     const { hasCameraPermission } = this.state;
+
+    //console.log("render MyScreen");
 
     let { x, y, z } = this.state.accelerometerData;
     if (hasCameraPermission === null) {

@@ -11,8 +11,8 @@ export default class PixiScreen extends React.Component {
   render() {
     return (
       <WebView
-        source={{uri: 'http://www.kunstman.nl/'}}
-        style={{marginTop: 20}}
+        source={{uri: 'http://www.kunstman.nl'}}
+        style={{marginTop: 20}} 
       />
     );   
   }
